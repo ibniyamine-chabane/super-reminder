@@ -4,7 +4,7 @@ Bienvenue sur Super Reminder, la plateforme incontournable pour une gestion effi
 
 ## À Propos
 
-Super Reminder est un projet réalisé dans le cadre de notre formation chez La Plateforme_Marseille. Il a pour objectif de fournir un outil puissant pour gérer vos tâches et projets de manière optimale.
+Super Reminder est un projet réalisé dans le cadre de notre formation chez La Plateforme_ Marseille. Il a pour objectif de fournir un outil puissant pour gérer vos tâches et projets de manière optimale.
 
 ## Fonctionnalités Clés
 
