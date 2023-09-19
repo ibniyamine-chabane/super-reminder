@@ -17,4 +17,3 @@ Personnalisez votre expérience en modifiant vos informations personnelles et en
 ### Gestion des Tâches
 - **Création de Tâches**: Ajoutez les tâches que vous devez accomplir, décrivez-les et attribuez-leur des priorités.
 - **Suivi en Temps Réel**: Marquez les tâches en cours et celles terminées pour une vision claire de votre progression.
-- **Organisation Intuitive**: Classez vos tâches par catégories, dates d'échéance ou toute autre méthode qui vous convient.
