@@ -38,3 +38,23 @@ burgerMenuButton.onclick = function() {
     
 // })
 
+let submit = formInfo.submit-info
+submit.addEventListener("click", ()=>{
+    
+    let formInfo = document.getElementById("form-info");
+    let nameLogin = formInfo.login.value;
+    let nameFirstname = formInfo.firstname.value;
+    let nameLastname = formInfo.lastname.value;
+    let namePassword = formInfo.password-valid-login.value;
+
+    const formData = new FormData();
+    formData.append("login", nameLogin)
+    formData.append("firstname", nameFirstname)
+    formData.append("lastname", nameLastname)
+    formData.append("password-valid-login", namePassword)
+})
+
+async function updateProfil(user) {
+    
+    let response = await fetch('');
+}

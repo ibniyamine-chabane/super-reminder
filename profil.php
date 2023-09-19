@@ -76,7 +76,7 @@ if (isset($_POST['submit-password'])) {
 <main>
     <section>
         <div class="flex">
-            <form action="" class="form" method="post">
+        <form action="" id="form-info" class="form" method="post">
                 <div class="title">Changer le login</div>
                 <?php if(isset($messageUpdateLogin) && !empty($messageUpdateLogin)) : ?>
                     <div class="subtitle"><?= $messageUpdateLogin ?></div>
@@ -101,7 +101,7 @@ if (isset($_POST['submit-password'])) {
                     <div class="cut radius-password"></div>
                     <label for="password-valid-login" class="placeholder">Confirmation avec mot de passe</label>
                 </div>
-                <button type="submit" name="submit-info" class="submit">Modifier les infos</button>
+                <button type="button" name="submit-info" class="submit">Modifier les infos</button>
             </form>
 
             <form action="" class="form" method="post">
