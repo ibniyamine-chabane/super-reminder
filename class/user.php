@@ -128,7 +128,8 @@ class User {
     }
     public function getUserLogged() {
         $request = $this->database->prepare("SELECT * FROM user WHERE `id` = ?");
-        $request->execute(array($_SESSION['id_user']));
+        $idUserLogged = $_SESSION['id_user'];
+        $request->execute(array($idUserLogged));
         return $userData = $request->fetchAll(PDO::FETCH_ASSOC);
     }
 

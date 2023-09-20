@@ -38,23 +38,32 @@ burgerMenuButton.onclick = function() {
     
 // })
 
-let submit = formInfo.submit-info
-submit.addEventListener("click", ()=>{
+// let formInfo = document.getElementById("form-info");
+// let submit = formInfo.submit-info.value
+// submit.addEventListener("click", ()=>{
     
-    let formInfo = document.getElementById("form-info");
-    let nameLogin = formInfo.login.value;
-    let nameFirstname = formInfo.firstname.value;
-    let nameLastname = formInfo.lastname.value;
-    let namePassword = formInfo.password-valid-login.value;
+//     let nameLogin = formInfo.login.value;
+//     let nameFirstname = formInfo.firstname.value;
+//     let nameLastname = formInfo.lastname.value;
+//     let namePassword = formInfo.password-valid-login.value;
 
-    const formData = new FormData();
-    formData.append("login", nameLogin)
-    formData.append("firstname", nameFirstname)
-    formData.append("lastname", nameLastname)
-    formData.append("password-valid-login", namePassword)
-})
+//     const formData = new FormData();
+//     formData.append("login", nameLogin)
+//     formData.append("firstname", nameFirstname)
+//     formData.append("lastname", nameLastname)
+//     formData.append("password-valid-login", namePassword)
+// })
 
 async function updateProfil(user) {
     
-    let response = await fetch('');
+    let response = await fetch('dataController.php?userLogged',{ 
+        method: "GET",
+
+    });
+
+    let rep = await response.json();
+    console.log(rep);
+
 }
+
+updateProfil(1)
