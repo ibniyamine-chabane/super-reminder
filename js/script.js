@@ -54,16 +54,16 @@ burgerMenuButton.onclick = function() {
 //     formData.append("password-valid-login", namePassword)
 // })
 
-async function updateProfil(user) {
+// async function updateProfil(user) {
     
-    let response = await fetch('dataController.php?userLogged',{ 
-        method: "GET",
+//     let response = await fetch('dataController.php?userLogged',{ 
+//         method: "GET",
 
-    });
+//     });
 
-    let rep = await response.json();
-    console.log(rep);
+//     let rep = await response.json();
+//     console.log(rep);
 
-}
+// }
 
-updateProfil(1)
+// updateProfil(1)

@@ -280,6 +280,15 @@ table .action-button {
   border: 1px solid #ff2c2c;
 }
 
+/* --------- Project Pages ----------*/
+
+.box-card {
+  width: 302px;
+  text-align: center;
+  padding: 6px;
+  border: 1px solid black;
+}
+
 /* ---------- BURGER MENU -----------*/
 
 .burger-menu {
