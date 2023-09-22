@@ -2,10 +2,20 @@
 session_start();
 require_once("class/project.php");
 $project = new Project;
+$message = "";
 
-if (isset($_POST['sumbit-add'])) {
-  
-}
+// if (isset($_POST['submit'])) {
+  if (isset($_POST['title']) && isset($_POST['description']) && !empty($_POST['title']) && !empty($_POST['description']) ) {
+
+    $title = htmlspecialchars($_POST['title']);
+    $description = htmlspecialchars(($_POST['description']));
+    $project->addProject($title, $description);
+
+  } else {
+    $message = "Veuillez remplir tous les champs";
+  }  
+    
+// }
 
 
 ?>
@@ -27,7 +37,7 @@ if (isset($_POST['sumbit-add'])) {
     <?php require_once("header.php"); ?>
 <main>
     <section>
-        <form action="" class="form" method="post">
+        <form action="" class="form" id="form" method="post">
             <div class="title">ajouter un projet</div>
             <div class="input-container ic1">
                 <input id="title" type="text" class="input" name="title" placeholder="">
@@ -39,7 +49,7 @@ if (isset($_POST['sumbit-add'])) {
                 <div class="cut"></div>
                 <label for="description" class="placeholder">description</label>
             </div>
-            <button type="submit" name="submit-add" class="submit">add new project</button>
+            <input type="submit" name="submit" class="submit" value="add new project">
         </form>
         <div id="display-task">
 

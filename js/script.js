@@ -67,3 +67,13 @@ burgerMenuButton.onclick = function() {
 // }
 
 // updateProfil(1)
+// select le form
+//écouté la soumission du form
+// mettre asynch 
+// empécher le comportement pas défaut
+// récupérer les valeurs 
+// envoyer une requete fetch
+// récupérer la réponse
+//
+
+

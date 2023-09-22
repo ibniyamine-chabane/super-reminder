@@ -18,10 +18,8 @@ class Project {
     }
 
     public function addProject(string $title, string $description) {
-        $request = $this->database->prepare('SELECT `title` , `description` FROM project WHERE `id_user` = ?');
-        $request->execute(array($_SESSION['id_user']));
-        return $userDatabase = $request->fetchAll(PDO::FETCH_ASSOC);
-        
+        $request = $this->database->prepare('INSERT INTO project(title, description, id_user) VALUES(?, ?, ?)');
+        $request->execute(array($title, $description, $_SESSION['id_user']));        
     }
 
     public function getAllUserProject() {
