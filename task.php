@@ -43,8 +43,10 @@ $_SESSION['project_id'] = $_GET['project_id'];
             </div>
             <input type="submit" name="submit" class="submit" value="add new project">
         </form>
-        <div id="display-task">
-
+        <div class="containerTasks">
+            <div id="container-task-todo"></div>
+            <div id="container-task-in-progress"></div>
+            <div id="container-task-done"></div>
         </div>
     </section>
 </main>
