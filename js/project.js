@@ -7,16 +7,16 @@ async function displayUserProject() {
     });
 
     let projets = await response.json();
-    const containerTask = document.getElementById('display-task')
+    const containerProject = document.getElementById('display-task')
 
     projets.forEach(projet => {
         // console.log(projet.description);
-    const taskBox = document.createElement('div');
-    taskBox.classList.add('box-card');
-    containerTask.appendChild(taskBox);
+    const ProjectBox = document.createElement('div');
+    ProjectBox.classList.add('box-card');
+    containerProject.appendChild(ProjectBox);
 
     const { title, description , id_user , id } = projet;
-    taskBox.innerHTML = `<a href="tasks.php?taks_id=${id}"><p>${title}</p>
+    ProjectBox.innerHTML = `<a href="tasks.php?taks_id=${id}"><p>${title}</p>
                             <p id="movie-name">${description}</p>
                          </a>`;
     });
