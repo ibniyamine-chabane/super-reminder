@@ -13,4 +13,9 @@ if (isset($_GET['TaskUserLogged'])) {
     echo json_encode($project->getAllUserProject());
 }   
 
+
+if (isset($_GET['project_id'])) {
+    $project = new Project;
+    echo json_encode($project->getTaskByProjectID());
+}
 ?>

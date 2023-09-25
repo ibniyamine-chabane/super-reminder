@@ -16,7 +16,7 @@ async function displayUserProject() {
     containerProject.appendChild(ProjectBox);
 
     const { title, description , id_user , id } = projet;
-    ProjectBox.innerHTML = `<a href="tasks.php?taks_id=${id}"><p>${title}</p>
+    ProjectBox.innerHTML = `<a href="task.php?project_id=${id}"><p>${title}</p>
                             <p id="movie-name">${description}</p>
                          </a>`;
     });

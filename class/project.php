@@ -23,11 +23,23 @@ class Project {
     }
 
     public function getAllUserProject() {
-        $request = $this->database->prepare('SELECT * FROM project WHERE `id_user` = ?');
+        $request = $this->database->prepare('SELECT project.id, project.title, project.description FROM project WHERE `id_user` = ?');
         $request->execute(array($_SESSION['id_user']));
         return $userDatabase = $request->fetchAll(PDO::FETCH_ASSOC);
     }
     
+    public function getTaskByProjectID() {
+        $request = $this->database->prepare('SELECT project.id as projectId , project.title as project_title , 
+                                             project.description as project_desc , project.id_user as project_idUSer , 
+                                             task.id as task_id , task.title as task_title , task.description as task_desc , 
+                                             task.id_project , task.id_user as task_idUSer , statut
+                                             FROM project
+                                             INNER JOIN task 
+                                             ON project.id = task.id_project
+                                             WHERE project.id = ?');
+        $request->execute(array($_SESSION['project_id']));
+        return $data = $request->fetchAll(PDO::FETCH_ASSOC);
+    }
     public function getMessage() {
         return $this->message;
     }
