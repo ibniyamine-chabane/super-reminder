@@ -289,6 +289,39 @@ table .action-button {
   border: 1px solid black;
 }
 
+/* ---------- Task Pages ------------*/ 
+
+.containerTasks {
+  width: 90%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.container-task-todo, 
+.container-task-in-progress, 
+.container-task-done {
+ border: 1px solid red;
+ width: 400px;
+} 
+
+.task-state-btn {
+  all: revert;
+  border-radius: 6px;
+  padding: 3px;
+}
+
+.btn-flex {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.task {
+  background-color: #ffffffc2;
+  border-radius: 45px;
+  text-align: center;
+  padding: 10px;
+}
 /* ---------- BURGER MENU -----------*/
 
 .burger-menu {

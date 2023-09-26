@@ -22,6 +22,11 @@ class Project {
         $request->execute(array($title, $description, $_SESSION['id_user']));        
     }
 
+    public function addTask(string $title, string $description) {
+        $request = $this->database->prepare('INSERT INTO task(title, description, id_project, id_user, status) VALUES(?, ?, ?, ?, ?)');
+        $request->execute(array($title, $description, $_SESSION['project_id'], $_SESSION['id_user'], "todo"));        
+    }
+
     public function getAllUserProject() {
         $request = $this->database->prepare('SELECT project.id, project.title, project.description FROM project WHERE `id_user` = ?');
         $request->execute(array($_SESSION['id_user']));
@@ -32,7 +37,7 @@ class Project {
         $request = $this->database->prepare('SELECT project.id as projectId , project.title as project_title , 
                                              project.description as project_desc , project.id_user as project_idUSer , 
                                              task.id as task_id , task.title as task_title , task.description as task_desc , 
-                                             task.id_project , task.id_user as task_idUSer , statut
+                                             task.id_project , task.id_user as task_idUSer , status
                                              FROM project
                                              INNER JOIN task 
                                              ON project.id = task.id_project

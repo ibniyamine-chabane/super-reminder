@@ -3,12 +3,20 @@ session_start();
 require_once("class/project.php");
 $project = new Project;
 
-$_SESSION['project_id'] = $_GET['project_id'];
-// var_dump($_GET);
-// if (isset($_GET['project_id'])) {
-//     echo json_encode($project->getTaskByProjectID());
-//     die();
-// }
+if (isset($_GET['project_id'])) {
+
+    $_SESSION['project_id'] = $_GET['project_id'];
+}
+
+if (isset($_POST['title']) && isset($_POST['description']) && !empty($_POST['title']) && !empty($_POST['description']) ) {
+
+    $title = htmlspecialchars($_POST['title']);
+    $description = htmlspecialchars(($_POST['description']));
+    $project->addTask($title, $description);
+
+  } else {
+    $message = "Veuillez remplir tous les champs";
+  }  
 
 ?>
 <!DOCTYPE html>
@@ -29,7 +37,7 @@ $_SESSION['project_id'] = $_GET['project_id'];
     <?php require_once("header.php"); ?>
 <main>
     <section>
-        <form action="" class="form" id="form" method="post">
+        <form action="" class="form" id="formAddTask" method="post">
             <div class="title">ajouter une tache</div>
             <div class="input-container ic1">
                 <input id="title" type="text" class="input" name="title" placeholder="">
@@ -43,10 +51,16 @@ $_SESSION['project_id'] = $_GET['project_id'];
             </div>
             <input type="submit" name="submit" class="submit" value="add new project">
         </form>
-        <div class="containerTasks">
-            <div id="container-task-todo"></div>
-            <div id="container-task-in-progress"></div>
-            <div id="container-task-done"></div>
+        <div class="containerTasks" id="containerTasks">
+            <div id="container-task-todo" class="container-task-todo">
+                <!-- <h2>To do</h2> -->
+            </div>
+            <div id="container-task-in-progress" class="container-task-in-progress">
+                <!-- <h2>In progress</h2> -->
+            </div>
+            <div id="container-task-done" class="container-task-done">
+                <!-- <h2>Done</h2> -->
+            </div>
         </div>
     </section>
 </main>
