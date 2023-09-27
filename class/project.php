@@ -27,6 +27,13 @@ class Project {
         $request->execute(array($title, $description, $_SESSION['project_id'], $_SESSION['id_user'], "todo"));        
     }
 
+    public function changeTaskStatus(string $status, int $task_id) {
+        $request = $this->database->prepare("UPDATE task 
+                                             SET `status` = (?) 
+                                             WHERE task.id = (?)");
+        $request->execute(array($status, $task_id));
+    }
+
     public function getAllUserProject() {
         $request = $this->database->prepare('SELECT project.id, project.title, project.description FROM project WHERE `id_user` = ?');
         $request->execute(array($_SESSION['id_user']));

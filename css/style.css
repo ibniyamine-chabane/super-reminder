@@ -292,7 +292,7 @@ table .action-button {
 /* ---------- Task Pages ------------*/ 
 
 .containerTasks {
-  width: 90%;
+  /* width: 90%; */
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -321,6 +321,11 @@ table .action-button {
   border-radius: 45px;
   text-align: center;
   padding: 10px;
+  margin: 4px;
+}
+
+.marge-box {
+  margin: 10px;
 }
 /* ---------- BURGER MENU -----------*/
 

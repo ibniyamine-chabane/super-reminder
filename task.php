@@ -16,7 +16,14 @@ if (isset($_POST['title']) && isset($_POST['description']) && !empty($_POST['tit
 
   } else {
     $message = "Veuillez remplir tous les champs";
-  }  
+  }
+  
+if (isset($_POST['in-Progress']) && isset($_POST['task_id']) && !empty($_POST['In-Progress']) && !empty($_POST['task_id'])) {
+  
+  $status = htmlspecialchars($_POST['in-Progress']);
+  $task_id = htmlspecialchars($_POST['task_id']);
+  $project->changeTaskStatus($status, $task_id);
+}  
 
 ?>
 <!DOCTYPE html>
@@ -52,15 +59,18 @@ if (isset($_POST['title']) && isset($_POST['description']) && !empty($_POST['tit
             <input type="submit" name="submit" class="submit" value="add new project">
         </form>
         <div class="containerTasks" id="containerTasks">
-            <div id="container-task-todo" class="container-task-todo">
-                <!-- <h2>To do</h2> -->
+            <div class="marge-box">
+                <h2>To do</h2>
+                <div id="container-task-todo" class="container-task-todo"></div>
             </div>
-            <div id="container-task-in-progress" class="container-task-in-progress">
-                <!-- <h2>In progress</h2> -->
+            <div class="marge-box">
+                 <h2>In progress</h2>
+                <div id="container-task-in-progress" class="container-task-in-progress"></div>
             </div>
-            <div id="container-task-done" class="container-task-done">
-                <!-- <h2>Done</h2> -->
-            </div>
+            <div class="marge-box"> 
+                <h2>Done</h2> 
+                <div id="container-task-done" class="container-task-done"></div>
+            </div>  
         </div>
     </section>
 </main>
