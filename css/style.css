@@ -292,10 +292,11 @@ table .action-button {
 /* ---------- Task Pages ------------*/ 
 
 .containerTasks {
-  /* width: 90%; */
+  width: 95%;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  margin: auto;
 }
 
 .container-task-todo, 
