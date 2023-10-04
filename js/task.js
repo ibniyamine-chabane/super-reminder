@@ -7,23 +7,14 @@
     });
 
     let tasks = await response.json();
-    // console.log(tasks);
-
-    // let containerTodo = document.getElementById('container-task-todo');
     let inProgressTarget = document.getElementById('container-task-in-progress');
-    // let containerInProgress = document.getElementById('container-task-in-progress');
-    // let containerDone = document.getElementById('container-task-done');
     let doneTarget = document.getElementById('container-task-done');
-    // console.log(containerDone);
     let todoTarget = document.getElementById('container-task-todo')
     let taskBoxTodo = ""
     let taskBoxInProgress = ""
     let taskBoxDone = ""
     tasks.forEach(task => {
-        // console.log(task);
-        // const toDoBox = document.createElement('div');
-        // const inProgressBox = document.createElement('div');
-        // const doneBox = document.createElement('div');
+      
 
         const { id_project, projectId, project_desc, 
                 project_idUser, project_title, status, 
@@ -36,24 +27,23 @@
             // containerTodo.appendChild(taskBox);
 
             taskBoxTodo = taskBoxTodo + `
-                                        <div class="task-box-todo">
                                           <div class="task">
                                             <p>${task_title}</p>
                                             <p>${task_desc}</p>
                                             <div class="btn-flex">
-                                              <form class="formState" action="" method="post">
+                                              <form class="formState" id="inprogress_${task_id}" action="" method="post">
                                                 <input type="hidden" name="task_id" value="${task_id}">
                                                 <input type="hidden" name="in-Progress" value="in_progress">
-                                                <button class="task-state-btn" name="submit">In Progress</button>
+                                                <button class="task-state-btn" id="inProgress" name="submit">In Progress</button>
                                               </form>
-                                              <form class="formState" action="" method="post">
+                                              <form class="formState" id="done_${task_id}" action="" method="post">
                                                 <input type="hidden" name="task_id" value="${task_id}">
                                                 <input type="hidden" name="done" value="done" >
-                                                <button class="task-state-btn" name="submit">Done</button>
+                                                <button type="submit" class="task-state-btn" id="done${task_id}" name="submit">Done</button>
                                               </form>
                                             </div>
                                           </div>
-                                        </div>`
+                                          `
 
         } 
 
@@ -65,22 +55,22 @@
             // containerInProgress.appendChild(taskBox);
 
             taskBoxInProgress = taskBoxInProgress + `
-                                    <div class="task">
-                                    <p>${task_title}</p>
-                                    <p>${task_desc}</p>
-                                    <div class="btn-flex">
-                                        <form class="formState" action="" method="post">
-                                            <input type="hidden" name="task_id" value="${task_id}">
-                                            <input type="hidden" name="todo" value="todo">
-                                            <button class="task-state-btn" name="submit">To do</button>
-                                        </form>
-                                        <form class="formState" action="" method="post">
-                                            <input type="hidden" name="task_id" value="${task_id}">
-                                            <input type="hidden" name="done" value="done">
-                                            <button class="task-state-btn" name="submit">Done</button>
-                                        </form>
-                                    </div>
-                                 </div>`
+                                                      <div class="task">
+                                                        <p>${task_title}</p>
+                                                        <p>${task_desc}</p>
+                                                        <div class="btn-flex">
+                                                          <form class="formState" id="todo_${task_id}" action="" method="post">
+                                                              <input type="hidden" name="task_id" value="${task_id}">
+                                                              <input type="hidden" name="todo" value="todo">
+                                                              <button class="task-state-btn" id="todo" name="submit">To do</button>
+                                                          </form>
+                                                          <form class="formState" id="done_${task_id}" action="" method="post">
+                                                              <input type="hidden" name="task_id" value="${task_id}">
+                                                              <input type="hidden" name="done" value="done">
+                                                              <button type="submit" class="task-state-btn" id="done${task_id}" name="submit">Done</button>
+                                                          </form>
+                                                        </div>
+                                                      </div>`
         } 
 
         if ( status == "done") {
@@ -94,22 +84,33 @@
                                     <p>${task_title}</p>
                                     <p>${task_desc}</p>
                                     <div class="btn-flex">
-                                        <form class="formState" action="" method="post">
+                                        <form class="formState" id="todo_${task_id}" action="" method="post">
                                             <input type="hidden" name="task_id" value="${task_id}">
                                             <input type="hidden" name="todo" value="todo">
-                                            <button class="task-state-btn" name="submit">to do</button>
+                                            <button class="task-state-btn" id="todo" name="submit" value="">to do</button>
                                         </form>
-                                        <form class="formState" action="" method="post">
+                                        <form class="formState" id="inprogress_${task_id}" action="" method="post">
                                             <input type="hidden" name="task_id" value="${task_id}">
                                             <input type="hidden" name="in-Progress" value="in_progress">
-                                            <button class="task-state-btn" name="submit">In Progress</button>
+                                            <button type="submit" class="task-state-btn" id="inProgress${task_id}" name="submit" >In Progress</button>
                                         </form>
                                     </div>
                                  </div>`
         } 
-
+        
+        
         
     });
+    // let formStates = document.querySelectorAll('.formState');
+    // const todo = document.querySelectorAll(`#todo`)
+    // formStates.forEach(element => {
+    //     console.log(element)
+    //     element.addEventListener("submit" , (e) => {
+    //       e.preventDefault()
+    //     })
+
+      
+    // });
     todoTarget.innerHTML = taskBoxTodo
     inProgressTarget.innerHTML = taskBoxInProgress
     doneTarget.innerHTML = taskBoxDone
@@ -122,7 +123,7 @@ form.addEventListener('submit', async (event) => {
     event.preventDefault();
     
         const formData = new FormData(form);
-        sendData(formData)
+        await sendData(formData)
         // const containerTask = document.getElementById('display-task')
         let containerTodo = document.getElementById('container-task-todo');
         let containerInProgress = document.getElementById('container-task-in-progress');
@@ -132,7 +133,7 @@ form.addEventListener('submit', async (event) => {
         containerDone.innerHTML = "";
         // containerTask.innerHTML = "";
         // displayUserProject();
-        displayTaskByProject();
+        await displayTaskByProject();
         const inputTitle = document.getElementById('title')
         const inputDesc = document.getElementById('description')
         inputTitle.value = "";
@@ -159,96 +160,8 @@ async function sendData(formData) {
     }
 }
 
-displayTaskByProject();
 
 /* ---------------- formulaire qui permte de changer l'état des tâches ------------------- */
-
-
-
-
-
-
-
-// async function senDataStatus(formDataState) {
-//     try {
-//       const response = await fetch('task.php', {
-//         method: 'POST',
-//         body: formDataState
-//       });
-
-//     //   console.log(response)
-  
-//       if (!response.ok) {
-//         throw new Error('Erreur lors de l\'envoi des données');
-//       }
-  
-//       const responseData = await response.text();
-//     } catch (error) {
-//       console.error('Erreur :', error);
-//     }
-// }
-
-// async function toto() {
-//   await displayTaskByProject();
-//   let formState = document.getElementsByClassName('formState');
-//   console.log(formState)
-   
-
-//   for (let i = 0; i < formState.length; i++) {
-//     formState[i].addEventListener('click', async (event) => {
-//         event.preventDefault();
-        
-//         const formDataState = new FormData(formState[i]);
-//         senDataStatus(formDataState)
-       
-//         let containerTodo = document.getElementById('container-task-todo');
-//         let containerInProgress = document.getElementById('container-task-in-progress');
-//         let containerDone = document.getElementById('container-task-done');
-//         containerTodo.innerHTML = "";
-//         containerInProgress.innerHTML = "";
-//         containerDone.innerHTML = "";
-//         await displayTaskByProject();
-    
-//         });
-//       }
-
-//       async function senDataStatus(formDataState) {
-//     try {
-//       const response = await fetch('task.php', {
-//         method: 'POST',
-//         body: formDataState
-//       });
-
-//     //   console.log(response)
-  
-//       if (!response.ok) {
-//         throw new Error('Erreur lors de l\'envoi des données');
-//       }
-  
-//       const responseData = await response.text();
-//     } catch (error) {
-//       console.error('Erreur :', error);
-//     }
-// }
-//     }
-//   formState.addEventListener('submit', async (event) => {
-//     event.preventDefault();
-    
-//     const formDataState = new FormData(formState);
-//     senDataStatus(formDataState)
-   
-//     let containerTodo = document.getElementById('container-task-todo');
-//     let containerInProgress = document.getElementById('container-task-in-progress');
-//     let containerDone = document.getElementById('container-task-done');
-//     containerTodo.innerHTML = "";
-//     containerInProgress.innerHTML = "";
-//     containerDone.innerHTML = "";
-//     await displayTaskByProject();
-
-//     });
-
-
-// toto()
 
 async function sendDataStatus(formDataState) {
   try {
@@ -256,6 +169,7 @@ async function sendDataStatus(formDataState) {
       method: 'POST',
       body: formDataState
     });
+    
 
     if (!response.ok) {
       throw new Error('Erreur lors de l\'envoi des données');
@@ -270,45 +184,113 @@ async function sendDataStatus(formDataState) {
 async function toto() {
 await displayTaskByProject();
 
-const formStates = document.querySelectorAll('.formState');
-// console.log(formStates[2])
-// console.log(formStates.length)
-  // for (let i = 0; i < formStates.length; i++) {
-  //   formStates[i].addEventListener('click', async (event) => {
-  //       event.preventDefault();
-  //       // console.log(i)
-  //       const formDataState = new FormData(formStates[i]);
-  //       await sendDataStatus(formDataState);
-       
-  //       let containerTodo = document.getElementById('container-task-todo');
-  //       let containerInProgress = document.getElementById('container-task-in-progress');
-  //       let containerDone = document.getElementById('container-task-done');
-  //       containerTodo.innerHTML = "";
-  //       containerInProgress.innerHTML = "";
-  //       containerDone.innerHTML = "";
-  //       await displayTaskByProject();
-  //   });
-  // }
+/* ------------- tentative de d'envoie de formulaire en selectionnat tout les form par sa class --------- */
+let formStates = document.querySelectorAll('.formState');
+let formStatesChoosen = document.querySelectorAll('.formState');
 
   formStates.forEach(formStatus => {
     
-    formStatus.addEventListener('click', async (e) =>{
+    formStatus.addEventListener('submit', async (e) =>{
       e.preventDefault();
-      const formDataState = new FormData(formStatus);
+      console.log("Bouton cliqué , au niveau du preventDefault")
+      let formDataState = new FormData(formStatus);
       await sendDataStatus(formDataState);
-      
-      let containerTodo = document.getElementById('container-task-todo');
-      let containerInProgress = document.getElementById('container-task-in-progress');
-      let containerDone = document.getElementById('container-task-done');
-      containerTodo.innerHTML = "";
-      containerInProgress.innerHTML = "";
-      containerDone.innerHTML = "";
       await displayTaskByProject();
       console.log(formStatus)
+      console.log("fin de l'action")
+      
     })
+   
   });
+  
+  
+  /* ---------------- tentative d'envoie des formulaire par id avec une boucle for ------------- */
+
+  // let response = await fetch('dataController?project_id',{ 
+  //   method: "GET",
+  
+  // });
+  
+  // let tasky = await response.json();
+  
+  // for (let j = 0; j < tasky.length; j++) {
+  //   let inProgress = document.getElementById(`inprogress_${tasky[j].task_id}`);
+  //   let toDo = document.getElementById(`todo_${tasky[j].task_id}`);
+  //   let finish = document.getElementById(`done_${tasky[j].task_id}`);
+  //   console.log(finish);
+  //   if (inProgress) {
+  //       inProgress.addEventListener('click', (e) => {
+  //           e.preventDefault();
+  //           let formDataInprogress = new FormData(inProgress);
+  //           sendDataStatus(formDataInprogress);
+  //           displayTaskByProject();
+  //         });
+  //   } else if (toDo) {
+  //       toDo.addEventListener('click', (e) => {
+  //       e.preventDefault();
+  //       let formDataTodo = new FormData(toDo);
+  //       sendDataStatus(formDataTodo);
+  //       displayTaskByProject();
+  //     });
+  //   } else if (finish) {
+  //       finish.addEventListener('click', (e) => {
+  //       e.preventDefault();
+  //       let formDataDone = new FormData(finish);
+  //       sendDataStatus(formDataDone);
+  //       displayTaskByProject();
+  //     });
+  //   }
+
+  // }    
+
+  /* --------------------------------------------------------  */ 
+
+    // progress.addEventListener('click', (e) => {
+    //     e.preventDefault()
+        
+    // })        
+
+
+  // for (let i = 0; i < formStates.length; i++) {
+  //     formStates[i].addEventListener('click', async (event) => {
+  //         event.preventDefault();
+  //         // let formDataState = new FormData(formStates[i]);
+  //         // await sendDataStatus(formDataState);
+  //        console.log(formStates[i])  
+  //       //  console.log(formStates[5])
+  //         // let containerTodo = document.getElementById('container-task-todo');
+  //         // let containerInProgress = document.getElementById('container-task-in-progress');
+  //         // let containerDone = document.getElementById('container-task-done');
+  //         // containerTodo.innerHTML = "";
+  //         // containerInProgress.innerHTML = "";
+  //         // containerDone.innerHTML = "";
+  //         await displayTaskByProject();
+  //     });
+
+  //     formStatesChoosen[i].addEventListener('click', async (event) => {
+  //       event.preventDefault();
+  //       let formDataState = new FormData(formStatesChoosen[i])
+  //       await sendDataStatus(formDataState)
+  //       await displayTaskByProject()
+  //     });
+
+
+  // }
+
+  // for (let i = 0; i < formStates.length; i++) {
+  //   const todo = document.getElementById(`todo${formStates[i].task_id}`)
+  //   console.log(todo)
+    
+  // }
 
 }
 
 toto();
+// async function main() {
+//   toto();
+//   await displayTaskByProject();
+// }
+
+// main();
+
 

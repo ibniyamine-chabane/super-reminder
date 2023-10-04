@@ -20,22 +20,23 @@ if (isset($_POST['title']) && isset($_POST['description']) && !empty($_POST['tit
   
 if (isset($_POST['in-Progress']) && isset($_POST['task_id']) && !empty($_POST['in-Progress']) && !empty($_POST['task_id'])) {
   
-  $status = htmlspecialchars($_POST['in-Progress']);
-  $task_id = htmlspecialchars($_POST['task_id']);
-  $project->changeTaskStatus($status, $task_id);
+    $status = htmlspecialchars($_POST['in-Progress']);
+    $task_id = htmlspecialchars($_POST['task_id']);
+    $project->changeTaskStatus($status, $task_id);
   
 } else if (isset($_POST['todo']) && isset($_POST['task_id']) && !empty($_POST['todo']) && !empty($_POST['task_id'])) {
   
     $status = htmlspecialchars($_POST['todo']);
     $task_id = htmlspecialchars($_POST['task_id']);
     $project->changeTaskStatus($status, $task_id);
+
 }  else if (isset($_POST['done']) && isset($_POST['task_id']) && !empty($_POST['done']) && !empty($_POST['task_id'])) {
   
     $status = htmlspecialchars($_POST['done']);
     $task_id = htmlspecialchars($_POST['task_id']);
     $project->changeTaskStatus($status, $task_id);
 }  
-// $project->changeTaskStatus("in_progress", 13);
+
 
 ?>
 <!DOCTYPE html>
