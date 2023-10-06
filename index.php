@@ -53,7 +53,7 @@ require_once("class/user.php");
                     <?php if(isset($_SESSION['id_user'])) : ?>
                         <a href="profil.php" class="action-button home-button">Profil</a>
                         <a href="logout.php" class="action-button home-button red">Se déconnecter</a>
-                        <a href="#" class="action-button home-button">Task list</a>
+                        <a href="projects.php" class="action-button home-button">Projet</a>
                     <?php else: ?>
                         <a href="login.php" class="action-button home-button">Connexion</a>
                         <a href="register.php" class="action-button home-button">Inscription</a>
@@ -63,5 +63,6 @@ require_once("class/user.php");
             </article>  
         </section>    
     </main>
+    <?php require_once('footer.php'); ?>
 </body>
 </html>

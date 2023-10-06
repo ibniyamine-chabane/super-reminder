@@ -31,7 +31,7 @@
 
             taskBoxTodo = taskBoxTodo + `
                                           <div class="task">
-                                            <p>${task_title}</p>
+                                            <p class="title_project">${task_title}</p>
                                             <p>${task_desc}</p>
                                             <div class="btn-flex">
                                               <form class="formState" id="inprogress_${task_id}" action="" method="post">
@@ -59,7 +59,7 @@
 
             taskBoxInProgress = taskBoxInProgress + `
                                                       <div class="task">
-                                                        <p>${task_title}</p>
+                                                        <p class="title_project">${task_title}</p>
                                                         <p>${task_desc}</p>
                                                         <div class="btn-flex">
                                                           <form class="formState" id="todo_${task_id}" action="" method="post">
@@ -84,7 +84,7 @@
 
             taskBoxDone = taskBoxDone + `
                                   <div class="task">
-                                    <p>${task_title}</p>
+                                    <p class="title_project">${task_title}</p>
                                     <p>${task_desc}</p>
                                     <div class="btn-flex">
                                         <form class="formState" id="todo_${task_id}" action="" method="post">

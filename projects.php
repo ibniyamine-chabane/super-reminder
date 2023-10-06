@@ -1,5 +1,10 @@
 <?php
 session_start();
+
+if (!$_SESSION) {
+    header("Location: index.php");
+}
+
 require_once("class/project.php");
 $project = new Project;
 $message = "";
@@ -51,10 +56,12 @@ $message = "";
             </div>
             <input type="submit" name="submit" class="submit" value="add new project">
         </form>
-        <div id="display-task">
-
-        </div>
+            <div class="container-project">
+                <h1>Les Projets</h1>
+                <div id="display-project"></div>  
+            </div>
     </section>
 </main>
+<?php require_once("footer.php"); ?>
 </body>
 </html>

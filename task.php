@@ -1,5 +1,9 @@
 <?php
 session_start();
+if (!$_SESSION) {
+    header("Location: index.php");
+}
+
 require_once("class/project.php");
 $project = new Project;
 

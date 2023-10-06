@@ -92,7 +92,16 @@ header {
     background-color: #fff;
     color: #120d31
 }
+/* ------------ Footer --------------*/
 
+footer {
+  background-color: rgba(0, 0, 0, 0.238);
+  margin-top: 22px;
+}
+
+.align-footer {
+  justify-content: center;
+}
 
 /* -------------FORM ----------------*/
 
@@ -287,8 +296,47 @@ table .action-button {
   text-align: center;
   padding: 6px;
   border: 1px solid black;
+  border-radius: 5px;
+  background-color: #252425bd;
+  margin: 10px;
 }
 
+.box-card a {
+  color: #fff;
+}
+
+.box-card a:hover {
+  color: #63C7B2
+}
+
+.container-project {
+  margin-top: 50px;
+  backdrop-filter: blur(4px);
+  width: 95%;
+  margin: auto;
+}
+
+.container-project h1 {
+  text-align: center;
+  padding: 25px 0px;
+  text-shadow: 2px 2px 4px black;
+  color: white;
+}
+
+#display-project {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+#display-project .box-card:hover {
+  background-color: #120d31;
+}
+
+.title_project {
+  font-weight: bold;
+  text-decoration: overline;
+}
 /* ---------- Task Pages ------------*/ 
 .box_contain_project_task {
   width: 95%;
@@ -301,6 +349,7 @@ table .action-button {
   text-align: center;
   padding: 21px 0px;
   color: white;
+  text-shadow: 2px 2px 1px black;
 }
 
 .containerTasks {
@@ -411,10 +460,6 @@ table .action-button {
 /******* header menu burger *************/
 @media (max-width: 990px) {
 
-    /* header {
-        background: none;
-    } */
-
     .navbar .links,
     .navbar .action-button {
         display: none;
@@ -444,13 +489,13 @@ table .action-button {
 }
 
 
-/****test table design *******************************/
+/****************test table design ********************/
 
 body,html {
   height: 100%;
   font-family: sans-serif
 }
-/*  */
+
 a {
   margin: 0;
   transition: all .4s;
@@ -516,12 +561,6 @@ iframe {
 
 .container-table100 {
   width: 100%;
-  /* min-height: 100vh; */
-  /* background: #c850c0;
-  background: -webkit-linear-gradient(45deg,#4158d0,#c850c0);
-  background: -o-linear-gradient(45deg,#4158d0,#c850c0);
-  background: -moz-linear-gradient(45deg,#4158d0,#c850c0);
-  background: linear-gradient(45deg,#4158d0,#c850c0); */
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-box;

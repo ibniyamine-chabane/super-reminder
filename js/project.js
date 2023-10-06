@@ -7,7 +7,7 @@ async function displayUserProject() {
     });
 
     let projets = await response.json();
-    const containerProject = document.getElementById('display-task')
+    const containerProject = document.getElementById('display-project')
 
     projets.forEach(projet => {
         // console.log(projet.description);
@@ -16,8 +16,8 @@ async function displayUserProject() {
     containerProject.appendChild(ProjectBox);
 
     const { title, description , id_user , id } = projet;
-    ProjectBox.innerHTML = `<a href="task.php?project_id=${id}"><p>${title}</p>
-                            <p id="movie-name">${description}</p>
+    ProjectBox.innerHTML = `<a href="task.php?project_id=${id}"><p class="title_project">${title}</p>
+                            <p id="">description : ${description}</p>
                          </a>`;
     });
 
