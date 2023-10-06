@@ -10,6 +10,7 @@
     let inProgressTarget = document.getElementById('container-task-in-progress');
     let doneTarget = document.getElementById('container-task-done');
     let todoTarget = document.getElementById('container-task-todo')
+    const projectTitle = document.getElementById('project_title')
     let taskBoxTodo = ""
     let taskBoxInProgress = ""
     let taskBoxDone = ""
@@ -19,7 +20,9 @@
         const { id_project, projectId, project_desc, 
                 project_idUser, project_title, status, 
                 task_desc, task_id, task_idUser, task_title } = task;
-
+        
+        console.log(tasks)
+                
         if ( status == "todo") {
             
             // let taskBox = document.createElement('div');
@@ -101,16 +104,7 @@
         
         
     });
-    // let formStates = document.querySelectorAll('.formState');
-    // const todo = document.querySelectorAll(`#todo`)
-    // formStates.forEach(element => {
-    //     console.log(element)
-    //     element.addEventListener("submit" , (e) => {
-    //       e.preventDefault()
-    //     })
-
-      
-    // });
+    projectTitle.innerText = tasks[0].project_title
     todoTarget.innerHTML = taskBoxTodo
     inProgressTarget.innerHTML = taskBoxInProgress
     doneTarget.innerHTML = taskBoxDone
@@ -124,15 +118,12 @@ form.addEventListener('submit', async (event) => {
     
         const formData = new FormData(form);
         await sendData(formData)
-        // const containerTask = document.getElementById('display-task')
         let containerTodo = document.getElementById('container-task-todo');
         let containerInProgress = document.getElementById('container-task-in-progress');
         let containerDone = document.getElementById('container-task-done');
         containerTodo.innerHTML = "";
         containerInProgress.innerHTML = "";
         containerDone.innerHTML = "";
-        // containerTask.innerHTML = "";
-        // displayUserProject();
         await displayTaskByProject();
         const inputTitle = document.getElementById('title')
         const inputDesc = document.getElementById('description')
@@ -148,7 +139,6 @@ async function sendData(formData) {
         body: formData
       });
 
-    //   console.log(response)
   
       if (!response.ok) {
         throw new Error('Erreur lors de l\'envoi des données');

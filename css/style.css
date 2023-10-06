@@ -290,6 +290,18 @@ table .action-button {
 }
 
 /* ---------- Task Pages ------------*/ 
+.box_contain_project_task {
+  width: 95%;
+  margin: auto;
+  margin-top: 15px;
+  backdrop-filter: invert(1);
+}
+
+.box_contain_project_task h1 {
+  text-align: center;
+  padding: 21px 0px;
+  color: white;
+}
 
 .containerTasks {
   width: 95%;
@@ -299,12 +311,12 @@ table .action-button {
   margin: auto;
 }
 
-.container-task-todo, 
+/* .container-task-todo, 
 .container-task-in-progress, 
 .container-task-done {
  border: 1px solid red;
- width: 400px;
-} 
+ width: 400px; 
+}  */
 
 .task-state-btn {
   all: revert;
@@ -327,6 +339,19 @@ table .action-button {
 
 .marge-box {
   margin: 10px;
+  width: 30%;
+
+}
+
+.todo {
+  background-color: darkcyan;
+    border-radius: 12px;
+    box-shadow: 1px 3px 18px 0px black;
+    padding: 10px;
+}
+
+.todo h2 {
+  color: white;
 }
 /* ---------- BURGER MENU -----------*/
 
@@ -383,7 +408,7 @@ table .action-button {
 }
 
 /* ---------- RESPONSIVE Media Queries ------------*/ 
-/******* header *************/
+/******* header menu burger *************/
 @media (max-width: 990px) {
 
     /* header {
@@ -402,7 +427,22 @@ table .action-button {
     .burger-menu {
         display: block;
     }
+
+/*********responsive task.php *********/
+
+    .containerTasks {
+      width: initial;
+    }
+
+    .marge-box {
+      width: 275px;
+    }
+
+    .task p, .task-state-btn {
+      font-size: 12px;
+    }
 }
+
 
 /****test table design *******************************/
 

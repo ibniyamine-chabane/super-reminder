@@ -56,7 +56,7 @@ if (isset($_POST['in-Progress']) && isset($_POST['task_id']) && !empty($_POST['i
 <body>
     <?php require_once("header.php"); ?>
 <main>
-    <section>
+    <section>       
         <form action="" class="form" id="formAddTask" method="post">
             <div class="title">ajouter une tache</div>
             <div class="input-container ic1">
@@ -71,20 +71,23 @@ if (isset($_POST['in-Progress']) && isset($_POST['task_id']) && !empty($_POST['i
             </div>
             <input type="submit" name="submit" class="submit" value="add new project">
         </form>
-        <div class="containerTasks" id="containerTasks">
-            <div class="marge-box">
-                <h2>To do</h2>
-                <div id="container-task-todo" class="container-task-todo"></div>
+        <div class="box_contain_project_task">
+            <h1 id="project_title">Hello</h1>
+            <div class="containerTasks" id="containerTasks">
+                <div class="marge-box todo">
+                    <h2>To do</h2>
+                    <div id="container-task-todo" class="container-task-todo"></div>
+                </div>
+                <div class="marge-box todo">
+                     <h2>In progress</h2>
+                    <div id="container-task-in-progress" class="container-task-in-progress"></div>
+                </div>
+                <div class="marge-box todo"> 
+                    <h2>Done</h2> 
+                    <div id="container-task-done" class="container-task-done"></div>
+                </div>  
             </div>
-            <div class="marge-box">
-                 <h2>In progress</h2>
-                <div id="container-task-in-progress" class="container-task-in-progress"></div>
-            </div>
-            <div class="marge-box"> 
-                <h2>Done</h2> 
-                <div id="container-task-done" class="container-task-done"></div>
-            </div>  
-        </div>
+        </div>    
     </section>
 </main>
 </body>
