@@ -30,7 +30,7 @@ form.addEventListener('submit', async (event) => {
     
         const formData = new FormData(form);
         envoyerDonnees(formData)
-        const containerTask = document.getElementById('display-task')
+        const containerTask = document.getElementById('display-project')
         containerTask.innerHTML = "";
         displayUserProject();
 });
